@@ -59,7 +59,7 @@ export default function Slogan(){
                 `}>
                     <IconVideo stroke={1}/>
                     <span className="font-thin md:text-sm text-base">
-                        <span className="hidden sm:inline">Watch the</span> video
+                        <span className="hidden sm:inline">Watch the</span> Video
                     </span>
                 </div>
             </div>
