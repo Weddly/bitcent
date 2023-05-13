@@ -7,7 +7,7 @@ import Testimonials from "./testimonials";
 
 export default function Landing() {
     return(
-        <Page>
+        <Page extern>
             <Header />
             <Highlight />
             <Features />
