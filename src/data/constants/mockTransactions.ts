@@ -2,7 +2,7 @@ import Transaction from "@/logic/core/finances/Transaction";
 import { TransactionType } from "@/logic/core/finances/TransactionType";
 import Id from "@/logic/core/shared/Id";
 
-const mockTransactions: Transaction[] = [
+export const mockTransactions: Transaction[] = [
     {
         id: Id.new(),
         description: 'Salary',
