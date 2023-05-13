@@ -1,4 +1,4 @@
-import fakeUser from "@/data/constants/fakeUser";
+import fakeUser from "@/data/constants/mockUser";
 import { useContext } from "react";
 
 export default function Welcome() {
