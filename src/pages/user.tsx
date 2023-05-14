@@ -11,6 +11,7 @@ export default function UserRegistration() {
     <Page>
         <Header />
         <Content>
+          {/* TODO - Secundary dynamic */}
             <PageTitle primary="Registration Data" secondary={`${user.email}`} icon={<IconForms />} />
             <Forms />
         </Content>
