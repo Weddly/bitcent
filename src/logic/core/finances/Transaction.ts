@@ -7,3 +7,11 @@ export default interface Transaction{
     date: Date
     type: TransactionType
 }
+
+export const emptyTransaction: Transaction = {
+    description: '',
+    value: 0,
+    date: new Date(),
+    type: TransactionType.EXPENSE
+
+}
