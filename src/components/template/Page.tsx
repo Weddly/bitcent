@@ -22,7 +22,7 @@ export default function Page(props: PageProps) {
 
     return props.extern ? render() : (
         <ForceAuthentication>
-            {render}
+            {render()}
         </ForceAuthentication>
     )
     
