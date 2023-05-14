@@ -1,7 +1,7 @@
 import useForm from "@/data/hooks/useForm";
 import MiniForm from "../template/MiniForm";
 import Transaction from "@/logic/core/finances/Transaction";
-import User from "@/logic/core/user/User";
+import UserLogin from "@/logic/core/user/User";
 import fakeUser from "@/data/constants/fakeUser";
 import { TextInput } from "@mantine/core";
 import TextFormat from "@/logic/utils/Text";
@@ -9,7 +9,7 @@ import SNN from "@/logic/utils/SSN";
 import Phone from "@/logic/utils/Phone";
 
 export default function Forms() {
-    const {data, changeValue} = useForm<User>(fakeUser)
+    const {data, changeValue} = useForm<UserLogin>(fakeUser)
 
     return(
         <div className="flex flex-col gap5
