@@ -1,14 +1,18 @@
 import Content from "@/components/template/Content";
 import Header from "@/components/template/Header";
 import Page from "@/components/template/Page";
-import Id from "@/logic/core/shared/Id";
+import PageTitle from "@/components/template/PageTitle";
+import {IconForms } from "@tabler/icons-react";
+import user from "@/data/constants/mockUser"
+import Forms from "@/components/user/Forms";
 
 export default function UserRegistration() {
   return (
     <Page>
         <Header />
         <Content>
-            User!!! {Id.new()}
+            <PageTitle primary="Registration Data" secondary={`${user.email}`} icon={<IconForms />} />
+            <Forms />
         </Content>
     </Page>
   )

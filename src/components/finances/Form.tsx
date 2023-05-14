@@ -14,7 +14,7 @@ interface FormProps{
 }
 
 export default function Form(props: FormProps) {
-    const{data, setData, changeValue} = useForm(props.transaction)
+    const{data, setData, changeValue} = useForm<Transaction>(props.transaction)
 
     return(
         <div className={`
