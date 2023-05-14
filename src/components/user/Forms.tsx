@@ -1,18 +1,29 @@
 import useForm from "@/data/hooks/useForm";
 import MiniForm from "../template/MiniForm";
-import Transaction from "@/logic/core/finances/Transaction";
 import UserLogin from "@/logic/core/user/User";
-import fakeUser from "@/data/constants/fakeUser";
 import { TextInput } from "@mantine/core";
 import TextFormat from "@/logic/utils/Text";
 import SNN from "@/logic/utils/SSN";
 import Phone from "@/logic/utils/Phone";
+import AuthContext from "@/data/contexts/AuthContext";
+import {useContext, useEffect} from 'react'
 
 export default function Forms() {
-    const {data, changeValue} = useForm<UserLogin>(fakeUser)
+    const { user, updateUser } = useContext(AuthContext)
+    const {data, changeValue, setData} = useForm<UserLogin>()
+
+    useEffect(() => {
+        if(!user) return
+        setData(user)
+    }, [user])
+
+    async function save() {
+        if(!user) return
+        await updateUser(data)
+    }
 
     return(
-        <div className="flex flex-col gap5
+        <div className="flex flex-col gap5 mt-7
         ">
             <MiniForm
                 title="Name"
@@ -20,7 +31,7 @@ export default function Forms() {
                 footerMsg="Name must contain between 3 and 80 characters."
                 btnText="Save"
                 canSave={TextFormat.stringSize(data.name, 3, 80)}
-                save={() => {}}
+                save={save}
             >
                 <TextInput 
                     value={data.name}
@@ -33,7 +44,7 @@ export default function Forms() {
                 footerMsg="Don't worry, your data is safe here!"
                 btnText="Save"
                 canSave={true}
-                save={() => {}}
+                save={save}
             >
                 <TextInput 
                     value={SNN.formatCPF(data.ssn ?? '')}
@@ -46,7 +57,7 @@ export default function Forms() {
                 footerMsg="We don't make collected calls!"
                 btnText="Save"
                 canSave={true}
-                save={() => {}}
+                save={save}
             >
                 <TextInput 
                     value={Phone.format(data.phone ?? '')}

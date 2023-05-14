@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-export default function useForm<T = any>(initialData: T) {
-    const [data, setData] = useState<T>(initialData)
+export default function useForm<T = any>(initialData?: T) {
+    const [data, setData] = useState<T>(initialData ?? {} as T)
 
     function changeValue (value: string, fn?: Function) {
         return (newValue: any) => {
