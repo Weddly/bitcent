@@ -1,12 +1,12 @@
-import fakeUser from "@/data/constants/mockUser";
+import AuthContext from "@/data/contexts/AuthContext";
 import { useContext } from "react";
 
 export default function Welcome() {
-    // const {user} = useContext(AuthenticationContext)
-    const user = fakeUser;
+    const {user} = useContext(AuthContext)
+
     function renderName() {
         return (
-            <span>
+            <span className="hidden sm:inline">
                 {user?.name?.split(' ')[0]}
             </span>
         )

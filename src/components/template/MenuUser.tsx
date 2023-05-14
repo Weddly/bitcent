@@ -1,14 +1,13 @@
-import fakeUser from "@/data/constants/mockUser";
+import { useContext } from "react";
+import AuthContext from "@/data/contexts/AuthContext";
 import { Avatar, Menu } from "@mantine/core";
 import { IconArrowsRightLeft, IconLogout, IconUser } from "@tabler/icons-react";
 import Link from "next/link";
 
 export default function MenuUser() {
-    const user = fakeUser;
-
-    function logout() {
-        console.log("I'm out")
-    }
+    
+    const {user, logout} = useContext(AuthContext)
+    
     
     return(
         <Menu>
