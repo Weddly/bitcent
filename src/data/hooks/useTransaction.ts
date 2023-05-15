@@ -1,6 +1,6 @@
 import Transaction from "@/logic/core/finances/Transaction"
 import AuthContext from "../contexts/AuthContext"
-import { useState, useContext, useEffect } from "react"
+import { useState, useContext, useEffect, useCallback } from "react"
 import services from "@/logic/core"
 
 export type ViewType = "list" | 'grid'
@@ -12,15 +12,15 @@ export default function useTransaction(){
     const [viewType, setViewType] = useState<ViewType>('list')
     const [selectedtransaction, setSelectedTransaction] = useState<Transaction | null>(null)
 
-    useEffect(() => {
-        getTransactions()
-    }, [date])
-
-    async function getTransactions() {
+    const getTransactions = useCallback(async function () {
         if(!user) return
         const transactions = await services.transaction.getByMonth(user, date)
         setTransactions(transactions)
-    }
+    }, [user, date])
+
+    useEffect(() => {
+        getTransactions()
+    }, [getTransactions, date])
     
     async function saveTransaction(transaction: Transaction) {
         if(!user) return
