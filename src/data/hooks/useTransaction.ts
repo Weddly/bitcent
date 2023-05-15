@@ -3,10 +3,13 @@ import AuthContext from "../contexts/AuthContext"
 import { useState, useContext, useEffect } from "react"
 import services from "@/logic/core"
 
+export type ViewType = "list" | 'grid'
+
 export default function useTransaction(){
     const { user } = useContext(AuthContext)
     const [date, setDate] = useState<Date>(new Date)
     const [transactions, setTransactions] = useState<Transaction[]>([])
+    const [viewType, setViewType] = useState<ViewType>('list')
     const [selectedtransaction, setSelectedTransaction] = useState<Transaction | null>(null)
 
     useEffect(() => {
@@ -38,9 +41,11 @@ export default function useTransaction(){
         transactions,
         selectedtransaction,
         date,
+        viewType,
         saveTransaction,
         deleteTransaction,
         selectTransaction: setSelectedTransaction,
-        changeDate: setDate
+        changeDate: setDate,
+        alternateViewType: setViewType
     }
 }

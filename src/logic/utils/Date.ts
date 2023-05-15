@@ -19,6 +19,15 @@ export default class DateFormat {
         }
     }
 
+    public static ddmm = {
+        format(dt: Date, language?: string): string {
+            return dt?.toLocaleDateString?.(language ?? DateFormat._language, {
+                day: '2-digit',
+                month: 'short'
+            } as Intl.DateTimeFormatOptions)
+        }
+    }
+
     public static months(language?: string) {
         return Array(12).fill(0).map((_, i) => new Date(2000, i, 1)
                 .toLocaleDateString(language ?? DateFormat._language, {month: 'short'})
