@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
+
+const isProd = process.env.NODE_ENV = 'production';
+
 const nextConfig = {
+  basePath: isProd ? '/app-inicial-next-react' : '',
+  output: 'export',
+  distDir: 'dist',
   reactStrictMode: true,
   images: {
     domains: [
